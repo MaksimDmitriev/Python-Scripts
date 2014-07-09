@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     dest_dir = args.dest
     if dest_dir is None:
-        dest_dir = os.path.join(os.path.dirname(os.path.realpath(args.source)), 'out')
+        dest_dir = os.path.join(os.path.dirname(os.path.realpath(args.source)), 'res')
     os.makedirs(dest_dir, exist_ok=True)
 
     '''
