@@ -1,9 +1,16 @@
+import PIL
+
 __author__ = 'Maksim Dmitriev'
 
 import argparse
 import os
 
 from PIL import Image
+from enum import Enum
+
+# class Density(Enum):
+#     mdpi = 1
+# TODO: implement if possible
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -35,8 +42,17 @@ if __name__ == "__main__":
     for k, v in dpi_dirs.items():
         os.makedirs(v, exist_ok=True)
 
-    im = Image.open(source_image, 'r').resize((args.baseline, args.baseline))
-    im.save(os.path.join(dpi_dirs[mdpi], 'lorem'), 'PNG')
+    # a if test else b
+    outfile = args.outfile if args.outfile is not None else 'dolor'
+    Image.open(source_image, 'r').resize((args.baseline, args.baseline)).save(os.path.join(dpi_dirs[mdpi], outfile),
+                                                                              'PNG')
+    # TODO: convert float to integer
+    # Image.open(source_image, 'r').resize((args.baseline * 1.5, args.baseline * 1.5)).save(
+    #     os.path.join(dpi_dirs[hdpi], outfile), 'PNG')
+    Image.open(source_image, 'r').resize((args.baseline * 2, args.baseline * 2)).save(
+        os.path.join(dpi_dirs[xhdpi], outfile), 'PNG')
+    Image.open(source_image, 'r').resize((args.baseline * 3, args.baseline * 3)).save(
+        os.path.join(dpi_dirs[xxhdpi], outfile), 'PNG')
 
 
 
