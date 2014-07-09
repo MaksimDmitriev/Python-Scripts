@@ -13,5 +13,10 @@ if __name__ == "__main__":
     source_image = args.source
     dest_dir = args.dest
     if dest_dir is None:
-        os.makedirs(os.path.dirname(os.path.realpath(source_image)) + os.sep + 'out', exist_ok=True)
+        dest_dir = os.path.join(os.path.dirname(os.path.realpath(source_image)), 'out')
+        os.makedirs(dest_dir, exist_ok=True)
+
+    dpi_dirs = ['drawable-mdpi', 'drawable-hdpi', 'drawable-xhdpi', 'drawable-xxhdpi']
+    for dpi_dir in dpi_dirs:
+        os.makedirs(os.path.join(dest_dir, dpi_dir), exist_ok=True)
 
