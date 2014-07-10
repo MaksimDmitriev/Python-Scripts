@@ -1,4 +1,6 @@
-Generate Android Drwables
+Python Scripts
 =================
 
-Generate Android drawable resources for XXHDPI, XHDPI, HDPI, and MDPI
+ * `gen-android-drawables.py` generates Android icons for XXHDPI, XHDPI, HDPI, and MDPI
+
+
