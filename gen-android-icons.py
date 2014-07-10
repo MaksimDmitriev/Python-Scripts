@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.4
+
 __author__ = 'Maksim Dmitriev'
 
 from enum import Enum
@@ -24,18 +26,18 @@ class Density(Enum):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--source', help='the icon to be resized', required=True)
-    parser.add_argument('-d', '--dest', help='the directory where resized icons are saved')
+    parser.add_argument('-d', '--destdir', help='the directory where resized icons are saved')
     parser.add_argument('-W', '--width', help='the width for medium-density (MDPI) screens (px)', type=int,
                         required=True)
     parser.add_argument('-H', '--height', help='the height for medium-density (MDPI) screens (px)', type=int,
                         required=True)
-    parser.add_argument('-f', '--outfile', help='the output file names')
+    parser.add_argument('-o', '--outfile', help='the output file names')
 
     args = parser.parse_args()
     if not os.path.isfile(args.source):
         raise FileNotFoundError('No such file or directory: ' + args.source)
 
-    dest_dir = args.dest
+    dest_dir = args.destdir
     if dest_dir is None:
         dest_dir = os.path.join(os.path.dirname(os.path.realpath(args.source)), 'res')
     os.makedirs(dest_dir, exist_ok=True)
