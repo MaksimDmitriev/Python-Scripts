@@ -51,5 +51,5 @@ if __name__ == "__main__":
 
     for density in Density:
         os.makedirs(os.path.join(dest_dir, density.folder), exist_ok=True)
-        Image.open(args.source).resize((density.get_dim(args.height), density.get_dim(args.width))).save(
+        Image.open(args.source).resize((density.get_dim(args.width), density.get_dim(args.height))).save(
             os.path.join(dest_dir, density.folder, out_filename), 'PNG')
